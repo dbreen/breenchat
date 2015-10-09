@@ -1,6 +1,8 @@
 var ChatServer = function(endpoint) {
     this.endpoint = endpoint;
     this.socket = undefined;
+
+    this.color_count = 7;
 };
 
 ChatServer.prototype = {
@@ -20,7 +22,7 @@ ChatServer.prototype = {
             message = $.parseJSON(event.data);
             switch(message.type) {
                 case 'message':
-                    me.log(message.message, message.handle);
+                    me.log(message.message, message.handle, message.id);
                     break;
                 case 'user_joined':
                     me.log(message.handle + " has joined the channel");
@@ -73,9 +75,21 @@ ChatServer.prototype = {
         return (hrs < 10 ? "0" : "") + hrs + ":" + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
     },
 
-    log: function(msg, user) {
-        var system = user == undefined;
-        $('#log').append('<div class="message'+(system ? ' message-system' : '')+'"><span class="time">'+this.timestamp()+'</span>: '+ (system ? '' : '<span class="user">'+user+':</span> ') +msg+'</div>');
+    log: function(msg, user, id) {
+        var system = user == undefined,
+            color_id = id % this.color_count,
+            $ts = $('<span class="time">').html(this.timestamp() + ': '),
+            $message = $('<div class="message">').append($ts),
+            $content = $('<span>');
+        if(system) {
+            $message.addClass('message-system');
+            $content.html(msg);
+        } else {
+            var $user = $('<span class="user">').html(user + ': ');
+            $content.addClass('color'+color_id).append($user).append(msg);
+        }
+        $message.append($content);
+        $('#log').append($message);
         $('#log').scrollTop($('#log')[0].scrollHeight);
     }
 };

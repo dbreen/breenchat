@@ -49,6 +49,7 @@ class Chatter(protocol.Protocol):
 
     def handle_message(self, params):
         self.broadcast('message', {
+            'id': self.id,
             'handle': self.handle,
             'message': params['message'],
         })
