@@ -30,9 +30,9 @@
                 <div id="log"></div>
                 <form id="chatform">
                     <div class="input-group">
-                        <input id="chat" type="text" class="form-control" />
+                        <input id="chat" type="text" class="form-control input-lg" />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" id="send">Send</button>
+                            <button class="btn btn-lg btn-primary" id="send">Send</button>
                         </span>
                     </div>
                 </form>
@@ -55,18 +55,18 @@
     		<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3>Choose a Handle</h3>
+					Choose a Handle
 				</div>
 				<div class="modal-body">
-					<form class="form-inline" id="handle-form">
+					<form id="handle-form">
 						<div class="input-group input-group-lg">
 							<span class="input-group-addon">@</span>
 							<input type="text" class="form-control" placeholder="Handle" id="handle">
+                            <span class="input-group-btn">
+                                <button class="btn btn-lg btn-primary">Login</button>
+                            </span>
 						</div>
 					</form>
-				</div>
-				<div class="modal-footer">
-				<a href="#" class="btn btn-primary btn-lg" data-dismiss="modal">Start Chatting</a>
 				</div>
 			</div>
 		</div>

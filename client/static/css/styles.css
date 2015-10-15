@@ -2,13 +2,19 @@
 	display: none;
 }
 
+#handle-dlg .modal-dialog {
+    margin-top: 100px;
+}
+
 #log {
 	height: 400px;
 	overflow-y: auto;
+    font-size: 110%;
 }
 
 .time {
-	color: #999;
+	color: #94B3BD;
+    font-size: 90%;
 }
 
 .user {
@@ -44,4 +50,9 @@
 }
 .user-color-4 { /* Blue */
     color: #5bc0de;
+}
+
+
+.input-group-addon {
+    background-color: #7E94A9;
 }
