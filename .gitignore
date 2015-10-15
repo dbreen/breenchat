@@ -3,5 +3,6 @@
 /bin/
 /include/
 /lib/
+.DS_Store
 .Python
 client/config_local.py

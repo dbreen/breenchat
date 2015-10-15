@@ -2,7 +2,7 @@ var ChatServer = function(endpoint) {
     this.endpoint = endpoint;
     this.socket = undefined;
 
-    this.color_count = 7;
+    this.color_count = 5;
 };
 
 ChatServer.prototype = {
@@ -45,7 +45,8 @@ ChatServer.prototype = {
     },
 
     add_user: function(id, handle) {
-        var $el = $('<li id="user-'+id+'">'+handle+'</li>').hide();
+        var color_id = id % this.color_count,
+            $el = $('<li id="user-'+id+'" class="list-group-item user-color-'+color_id+'">'+handle+'</li>').hide();
         $('#userlist').append($el);
         $el.fadeIn(500, this.update_count);
     },
@@ -86,7 +87,7 @@ ChatServer.prototype = {
             $content.html(msg);
         } else {
             var $user = $('<span class="user">').html(user + ': ');
-            $content.addClass('color'+color_id).append($user).append(msg);
+            $content.addClass('user-color-'+color_id).append($user).append(msg);
         }
         $message.append($content);
         $('#log').append($message);
