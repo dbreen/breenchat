@@ -97,14 +97,14 @@ ChatServer.prototype = {
 $(function() {
 
 	$('#handle-dlg').modal('show')
-		.on('shown', function() {
+		.on('shown.bs.modal', function() {
 			$('#handle').focus();
 			$('#handle-form').submit(function() {
 				$('#handle-dlg').modal('hide');
 				return false;
 			});
 		})
-		.on('hide', function() {
+		.on('hide.bs.modal', function() {
 			var handle = $('#handle').val();
 			window.chat.login(handle);
 			$('#chat-panel').fadeIn();
