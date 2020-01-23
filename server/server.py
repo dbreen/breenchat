@@ -22,7 +22,7 @@ class Chatter(protocol.Protocol):
         return json.dumps(params)
 
     def _write(self, message):
-        print "[%s,%d] OUT: %s" % (self.handle, self.id, message)
+        print("[%s,%d] OUT: %s" % (self.handle, self.id, message))
         self.transport.write(message)
 
     def reply(self, type_, params):
@@ -32,11 +32,11 @@ class Chatter(protocol.Protocol):
         self.factory.broadcast(self._build(type_, params))
 
     def error(self, message):
-        print "ERROR: %s" % message
+        print("ERROR: %s" % message)
         self.reply('error', {'message': message})
 
     def dataReceived(self, data):
-        print "[%s,%d]  IN: %s" % (self.handle, self.id, data)
+        print("[%s,%d]  IN: %s" % (self.handle, self.id, data))
         try:
             json_data = json.loads(data)
         except ValueError:
@@ -95,8 +95,8 @@ class ChatterFactory(protocol.Factory):
         self.chatters.remove(chatter)
 
 
-print "Starting reactor..."
+print("Starting reactor...")
 reactor.listenTCP(PORT, WebSocketFactory(ChatterFactory()))
-print "Listening on port %d..." % PORT
+print("Listening on port %d..." % PORT)
 reactor.run()
 
