@@ -1,4 +1,4 @@
-Twisted==15.4.0
+Twisted==22.4.0
 argparse==1.2.1
 bottle==0.12.8
 simplejson==3.8.0
