@@ -1,6 +1,6 @@
 Twisted==15.4.0
 argparse==1.2.1
-bottle==0.12.8
+bottle==0.12.20
 simplejson==3.8.0
 six==1.9.0
 txWS==0.9.1
